@@ -1,0 +1,221 @@
+<!-- 
+////////////////////////////////
+Aidan Rafferty
+Studio Space
+Fall 2017
+Midterm Project
+Active Satellites HTML
+Professor: Matt Bethancourt
+/////////////////////////////////
+ -->
+
+<!doctype html>
+
+<html lang = "en">
+
+
+<head>
+
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109063279-1"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-109063279-1');
+	</script>
+
+
+	<meta charset = "utf-8">
+
+	<title>
+
+		Active Satellites
+	
+	</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Raleway|Saira" rel="stylesheet">
+
+	<style type="text/css">
+		* {
+			  margin: 0; padding: 0;
+			  /*font-family: 'Raleway', sans-serif;*/
+			  font-family: 'Saira', sans-serif;
+			}
+
+		canvas
+		{
+			z-index: 1;
+		}
+
+		body
+		{
+			overflow: hidden;
+		}
+
+		ul 
+		{
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			background-color: #333;
+			position: fixed;
+			top: 0;
+			width: auto;
+		}
+
+		li 
+		{
+			float: left;
+			text-align: center;
+		}
+
+		li a 
+		{
+			display: block;
+			color: white;
+			text-align: center;
+			padding: 14px 16px;
+			text-decoration: none;
+		}
+
+		li a:hover 
+		{
+			background-color: #f4f5f7;
+		}
+
+		.info
+		{
+			color:#3df733;
+		}
+
+		.dropdown 
+		{
+			float: left;
+			overflow: hidden;
+			position: relative;
+		}
+
+		.infoBox
+		{
+			float: right;
+			border:solid;
+			color: yellow;
+			border-width: 2px;
+			position: fixed;
+			right: 0;
+			width: 200px;
+			background-color: black;
+
+		}
+
+		.dropdown .dropbtn 
+		{
+			cursor: pointer;
+			font-size: 16px;    
+			border: none;
+			outline: none;
+			color: white;
+			padding: 14px 16px;
+		}
+
+		.dropdown-content 
+		{
+			display: none;
+			/*position: absolute;*/
+			background-color: #f9f9f9;
+			width: auto;
+			z-index: 4;
+		}
+
+		.dropdown-content a:first-child
+		{
+			margin-top: 54px;
+		}
+
+		.dropdown-content a 
+		{
+		    color: black;
+		    padding: 5px 6px;
+		    text-decoration: none;
+		    display: block;
+		}
+
+
+		.dropdown:hover .dropdown-content {
+		    display: block;
+		}
+
+		.dropdown-content a:hover
+		{
+		    color: black;
+		}
+
+	</style>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/p5.js"></script> 		<!--Import p5-->
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/addons/p5.dom.js"></script>		<!--p5 import-->
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>		<!--Link to JQuery-->
+
+	<script type="text/javascript" src="activeSAT.js"></script>
+
+</head>
+
+<body>
+
+	<ul class="nav">
+		<!-- <li><a>About</a></li> -->
+		<div class="dropdown">
+    		<li class="dropbtn">Organize</li>
+		   
+		    <div class="dropdown-content">
+		    	<a href = "#" onclick="showAll()">All</a>
+		    	<a href = "#" onclick="showUSA()">USA</a>
+		      	<a href = "#" onclick="showRussia()">Russia</a>
+		      	<a href = "#" onclick="showChina()">China</a>
+		      	<a href = "#" onclick="showJapan()">Japan</a>
+		      	<a href = "#" onclick="showMulti()">Multinational</a>
+		      	<a href = "#" onclick="showUK()">United Kingdom</a>
+		      	<a href = "#" onclick="showCanada()">Canada</a>
+		      	<a href = "#" onclick="showESA()">ESA</a>
+
+		      <!-- 	<a href = "#" onclick="showCommms()">Communications</a>
+		      	<a href = "#" onclick="showTechDev()">Technology Dev.</a>
+		      	<a href = "#" onclick="showEO()">Earth Observation</a>
+		      	<a href = "#" onclick="showNav()">Navigation</a>
+		      	<a href = "#" onclick="showSS()">Space Science</a>
+		      	<a href = "#" onclick="showCiv()">Civil</a>
+		      	<a href = "#" onclick="showCom()">Commercial</a>
+		      	<a href = "#" onclick="showMil()">Military</a>
+		      	<a href = "#" onclick="showGov()">Government</a>
+		      	<a href = "#" onclick="showLEO()">LEO</a>
+		      	<a href = "#" onclick="showMEO()">MEO</a>
+		      	<a href = "#" onclick="showEllip()">Elliptical</a>
+		      	<a href = "#" onclick="showGEO()">GEO</a> -->
+		      	<!-- <a href="#">Mass</a> -->
+		    </div>
+		 </div>  
+		<!-- <li><a>Contact</a></li>  -->
+	</ul>
+
+	<div class="infoBox">
+			
+			<!--ID is for DOM manipulatr class is for CSS-->
+
+			<b>Name: </b> <p class = "info" id="name">ISS</p>
+			<b>Country of Origin: </b> <p class = "info" id="countryName">Country</p>
+			<b>Purpose: </b> <p class = "info" id="purpose">Whats The Purpose</p>
+			<b>Users: </b> <p class = "info" id="users">Who Uses It</p>
+			<b>Class of Orbit: </b> <p class = "info" id="orbClass">Mars Orbit</p>
+			<b>Launch Mass: </b> <p class = "info" id="mass">1,000,000 kg</p>
+			<b>Date of Launch: </b> <p class = "info" id="date">01/01/2000</p>
+			<b>Launch Vehicle</b> <p class = "info" id="vehicle">Space Shuttle</p>
+		
+	</div>
+	
+</body>
+
+</html>
