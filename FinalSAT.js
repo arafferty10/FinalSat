@@ -1,12 +1,12 @@
 
-// ////////////////////////////////
-// Aidan Rafferty
-// Studio Space
-// Fall 2017
-// Midterm Project
-// Active Satellites JS File
-// Professor: Matt Bethancourt
-// /////////////////////////////////
+////////////////////////////////
+//Aidan Rafferty
+//Studio Space
+//Fall 2017
+//360 Degree Satellite Projection HTML
+//Professor: Matt Bethancourt
+//Partner: Kristof 
+/////////////////////////////////
 
 //Satellite Objects are made here
 var sats = [];
