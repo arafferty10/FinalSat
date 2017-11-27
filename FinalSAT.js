@@ -5,7 +5,7 @@
 //Fall 2017
 //360 Degree Satellite Projection HTML
 //Professor: Matt Bethancourt
-//Partner: Kristof 
+//Partner: Kristof Klipfel and Carolyn Castanon
 /////////////////////////////////
 
 //Satellite Objects are made here
@@ -63,21 +63,6 @@ function logOut(data)
 
 function setup()
 {
-	
-	//////////////////////////////////////////////////////
-	//Checking a random satData each refresh CONSOLE LOG ONLY
-	// var ran = Math.floor((Math.random() * 1459) + 1)
-	// console.log(ran);
-	// console.log(satName[ran]);
-	// console.log(satCountry[ran]);
-	// console.log(satPurp[ran]);
-	// console.log(satOrb[ran]);
-	// console.log(satMass[ran]);
-	// console.log(satDate[ran]);
-	// console.log(satVehicle[ran]);
-	// console.log(satUser[ran]);
-	//////////////////////////////////////////////////////////
-
 	//create canvas
 
 	createCanvas(wW, wH);
@@ -103,9 +88,6 @@ function setup()
 
 		sats.push(new SaT(x, y, nm, ct, pr, ob, ma, dt, vh, ur, count));
 	}
-
-	//Hopefully will set up the hovering ability for the objects
-	// sats.mouseOver(hoverOver);
 
 }
 
@@ -693,75 +675,3 @@ function showESA()
 	}
 }
 
-
-
-// function showComms()
-// {
-	
-// }
-
-
-// function showTechDev()
-// {
-	
-// }
-
-
-// function showEO()
-// {
-	
-// }
-
-
-// function showNav()
-// {
-	
-// }
-
-
-// function showSS()
-// {
-	
-// }
-
-
-// function showCiv()
-// {
-
-// }
-
-
-// function showCom()
-// {
-	
-// }
-
-
-// function showMil()
-// {
-	
-// }
-
-
-// function showGov()
-// {
-	
-// }
-
-
-// function showLEO()
-// {
-	
-// }
-
-
-// function showMEO()
-// {
-	
-// }
-
-
-// function showEllip()
-// {
-	
-// }
