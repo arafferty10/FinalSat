@@ -145,6 +145,8 @@ function SaT(x, y, nm, ct, pr, ob, ma, dt, vh, ur, count)
   this.x = x;
   this.y = y;
 
+  this.yDir = Math.floor(random(0,2))*2 - 1;
+
   this.name = nm;
   this.country = ct;
   this.purpose = pr;
@@ -203,30 +205,32 @@ function SaT(x, y, nm, ct, pr, ob, ma, dt, vh, ur, count)
   //Defining the size of the object based on the lMass
   ////////////////////////////////////////////////////////////////////
 
-  if(this.mass <  10)
-  {
-  	this.radius = 4;
-  }
-  else if(this.mass > 10 && this.mass < 100)
-  {
-  	this.radius = random(5,8);
-  }
-  else if(this.mass > 100 && this.mass < 1000)
-  {
-  	this.radius = random(9,13);
-  }
-  else if(this.mass > 1000 && this.mass < 4999)
-  {
-  	this.radius = random(14,20)
-  }
-  else if(this.mass > 5000)
-  {
-  	this.radius = 25;
-  }
-  else
-  {
-  	this.radius = random(8,10);
-  }
+  this.radius = (this.mass * 0.005) + 10;
+
+  // if(this.mass <  10)
+  // {
+  // 	this.radius = 4;
+  // }
+  // else if(this.mass > 10 && this.mass < 100)
+  // {
+  // 	this.radius = random(5,8);
+  // }
+  // else if(this.mass > 100 && this.mass < 1000)
+  // {
+  // 	this.radius = random(9,13);
+  // }
+  // else if(this.mass > 1000 && this.mass < 4999)
+  // {
+  // 	this.radius = random(14,20)
+  // }
+  // else if(this.mass > 5000)
+  // {
+  // 	this.radius = 25;
+  // }
+  // else
+  // {
+  // 	this.radius = random(8,10);
+  // }
 
   //this.radius = random(5, 15);
  
@@ -276,7 +280,7 @@ function SaT(x, y, nm, ct, pr, ob, ma, dt, vh, ur, count)
   	if(this.selected == false)				//movement for when the object is not hovered over
   	{
   		this.x += 0.5;
-  		this.y += random(-0.1,0.5);
+  		this.y += random(-0.1,0.5) * this.yDir;
   	}
 
   	//This bit down here wraps the canvas around and sends the elements to the oppostie side
@@ -288,9 +292,16 @@ function SaT(x, y, nm, ct, pr, ob, ma, dt, vh, ur, count)
   		this.x = this.radius * -1;
   	}
 
+  	//Elimtinates the objects leaving the screen on the top and bottom
+
   	if(this.y > wH + this.radius)
   	{
-  		this.y = this.radius * -1;
+  		this.yDir = -1;
+  	}
+
+  	if(this.y < 0 - this.radius)
+  	{
+  		this.yDir = 1;
   	}
 
   }
@@ -309,24 +320,24 @@ function SaT(x, y, nm, ct, pr, ob, ma, dt, vh, ur, count)
 function infoManip(j)
 {
 	//Making JS elements for the HTML DOM manipulator part
-	var name = document.getElementById("name");
-	var country = document.getElementById("countryName");
-	var purpose = document.getElementById("purpose");;
-	var user = document.getElementById("users");
-	var orbit = document.getElementById("orbClass");
-	var lmass = document.getElementById("mass");
-	var lDate = document.getElementById("date");
-	var lVehicle = document.getElementById("vehicle");
+	// var name = document.getElementById("name");
+	// var country = document.getElementById("countryName");
+	// var purpose = document.getElementById("purpose");;
+	// var user = document.getElementById("users");
+	// var orbit = document.getElementById("orbClass");
+	// var lmass = document.getElementById("mass");
+	// var lDate = document.getElementById("date");
+	// var lVehicle = document.getElementById("vehicle");
 
-	//Rewriting the information in for the infobox
-	name.innerHTML = satName[j];
-	country.innerHTML = satCountry[j];
-	purpose.innerHTML = satPurp[j];
-	user.innerHTML = satUser[j];
-	orbit.innerHTML = satOrb[j];
-	lmass.innerHTML = satMass[j];
-	lDate.innerHTML = satDate[j];
-	lVehicle.innerHTML = satVehicle[j]; 
+	// //Rewriting the information in for the infobox
+	// name.innerHTML = satName[j];
+	// country.innerHTML = satCountry[j];
+	// purpose.innerHTML = satPurp[j];
+	// user.innerHTML = satUser[j];
+	// orbit.innerHTML = satOrb[j];
+	// lmass.innerHTML = satMass[j];
+	// lDate.innerHTML = satDate[j];
+	// lVehicle.innerHTML = satVehicle[j]; 
 }
 
 //Shows the dropdown menu
