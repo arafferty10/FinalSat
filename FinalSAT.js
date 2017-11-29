@@ -206,33 +206,6 @@ function SaT(x, y, nm, ct, pr, ob, ma, dt, vh, ur, count)
   ////////////////////////////////////////////////////////////////////
 
   this.radius = (this.mass * 0.005) + 10;
-
-  // if(this.mass <  10)
-  // {
-  // 	this.radius = 4;
-  // }
-  // else if(this.mass > 10 && this.mass < 100)
-  // {
-  // 	this.radius = random(5,8);
-  // }
-  // else if(this.mass > 100 && this.mass < 1000)
-  // {
-  // 	this.radius = random(9,13);
-  // }
-  // else if(this.mass > 1000 && this.mass < 4999)
-  // {
-  // 	this.radius = random(14,20)
-  // }
-  // else if(this.mass > 5000)
-  // {
-  // 	this.radius = 25;
-  // }
-  // else
-  // {
-  // 	this.radius = random(8,10);
-  // }
-
-  //this.radius = random(5, 15);
  
    /////////Drawing the sats on the display////////////////
 
@@ -352,337 +325,108 @@ function dropDown()
 ///////////////////////////////////////////////////////////////////
 function showAll()
 {
-	if(showCountry != "all")
-	{
-		showCountry = "all";
-	}
+	showCountry = "All";
+	showPurpose = "All";
+	showOrb = "All";
 }
 
 
 function showUSA()
 {
-	if(showCountry == "all")
-	{
-		showCountry = "USA";
-	}
-	else if(showCountry == "USA")
-	{
-		showCountry = "USA";
-	}
-	else if(showCountry == "Russia")
-	{
-		showCountry = "USA";
-	}
-	else if(showCountry == "China")
-	{
-		showCountry = "USA";
-	}
-	else if(showCountry == "Japan")
-	{
-		showCountry = "USA";
-	}
-	else if(showCountry == "Multinational")
-	{
-		showCountry = "USA";
-	}
-	else if(showCountry == "United Kingdom")
-	{
-		showCountry = "USA";
-	}
-	else if(showCountry == "Canada")
-	{
-		showCountry = "USA";
-	}
-	else if(showCountry == "ESA")
-	{
-		showCountry = "USA";
-	}
+	showCountry = "USA";
 }
 
 
 function showRussia()
 {
-	if(showCountry == "all")
-	{
-		showCountry = "Russia";
-	}
-	else if(showCountry == "Russia")
-	{
-		showCountry = "Russia";
-	}
-	else if(showCountry == "USA")
-	{
-		showCountry = "Russia";
-	}
-	else if(showCountry == "China")
-	{
-		showCountry = "Russia";
-	}
-	else if(showCountry == "Japan")
-	{
-		showCountry = "Russia";
-	}
-	else if(showCountry == "Multinational")
-	{
-		showCountry = "Russia";
-	}
-	else if(showCountry == "United Kingdom")
-	{
-		showCountry = "Russia";
-	}
-	else if(showCountry == "Canada")
-	{
-		showCountry = "Russia";
-	}
-	else if(showCountry == "ESA")
-	{
-		showCountry = "Russia";
-	}
+	showCountry = "Russia";
 }
 
 
 function showChina()
 {
-	if(showCountry == "all")
-	{
-		showCountry = "China";
-	}
-	else if(showCountry == "China")
-	{
-		showCountry = "China";
-	}
-	else if(showCountry == "Russia")
-	{
-		showCountry = "China";
-	}
-	else if(showCountry == "USA")
-	{
-		showCountry = "China";
-	} 
-	else if(showCountry == "Japan")
-	{
-		showCountry = "China";
-	}
-	else if(showCountry == "Multinational")
-	{
-		showCountry = "China";
-	}
-	else if(showCountry == "United Kingdom")
-	{
-		showCountry = "China";
-	}
-	else if(showCountry == "Canada")
-	{
-		showCountry = "China";
-	}
-	else if(showCountry == "ESA")
-	{
-		showCountry = "China";
-	}
+	showCountry = "China";
 }
 
 
 function showJapan()
 {
-	if(showCountry == "all")
-	{
-		showCountry = "Japan";
-	}
-	else if(showCountry == "Japan")
-	{
-		showCountry = "Japan";
-	}
-	else if(showCountry == "Russia")
-	{
-		showCountry = "Japan";
-	}
-	else if(showCountry == "USA")
-	{
-		showCountry = "Japan";
-	}
-	else if(showCountry == "China")
-	{
-		showCountry = "Japan";
-	} 
-	else if(showCountry == "Multinational")
-	{
-		showCountry = "Japan";
-	}
-	else if(showCountry == "United Kingdom")
-	{
-		showCountry = "Japan";
-	}
-	else if(showCountry == "Canada")
-	{
-		showCountry = "Japan";
-	}
-	else if(showCountry == "ESA")
-	{
-		showCountry = "Japan";
-	}
+	showCountry = "Japan";
 }
 
 
 function showMulti()
 {
-	if(showCountry == "all")
-	{
-		showCountry = "Multinational";
-	}
-	else if(showCountry == "Multinational")
-	{
-		showCountry = "Multinational";
-	}
-	else if(showCountry == "Russia")
-	{
-		showCountry = "Multinational";
-	}
-	else if(showCountry == "USA")
-	{
-		showCountry = "Multinational";
-	}
-	else if(showCountry == "China")
-	{
-		showCountry = "Multinational";
-	} 
-	else if(showCountry == "Japan")
-	{
-		showCountry = "Multinational";
-	}
-	else if(showCountry == "United Kingdom")
-	{
-		showCountry = "Multinational";
-	}
-	else if(showCountry == "Canada")
-	{
-		showCountry = "Multinational";
-	}
-	else if(showCountry == "ESA")
-	{
-		showCountry = "Multinational";
-	}
+	showCountry = "Multinational";
 }
 
 
 function showUK()
 {
-	if(showCountry == "all")
-	{
-		showCountry = "United Kingdom";
-	}
-	else if(showCountry == "United Kingdom")
-	{
-		showCountry = "United Kingdom";
-	}
-	else if(showCountry == "Russia")
-	{
-		showCountry = "United Kingdom";
-	}
-	else if(showCountry == "USA")
-	{
-		showCountry = "United Kingdom";
-	}
-	else if(showCountry == "China")
-	{
-		showCountry = "United Kingdom";
-	} 
-	else if(showCountry == "Japan")
-	{
-		showCountry = "United Kingdom";
-	}
-	else if(showCountry == "Multinational")
-	{
-		showCountry = "United Kingdom";
-	}
-	else if(showCountry == "Canada")
-	{
-		showCountry = "United Kingdom";
-	}
-	else if(showCountry == "ESA")
-	{
-		showCountry = "United Kingdom";
-	}
+	showCountry = "United Kingdom";
 }
 
 
 function showCanada()
 {
-	if(showCountry == "all")
-	{
-		showCountry = "Canada";
-	}
-	else if(showCountry == "Canada")
-	{
-		showCountry = "Canada";
-	}
-	else if(showCountry == "Russia")
-	{
-		showCountry = "Canada";
-	}
-	else if(showCountry == "USA")
-	{
-		showCountry = "Canada";
-	}
-	else if(showCountry == "China")
-	{
-		showCountry = "Canada";
-	} 
-	else if(showCountry == "Japan")
-	{
-		showCountry = "Canada";
-	}
-	else if(showCountry == "Multinational")
-	{
-		showCountry = "Canada";
-	}
-	else if(showCountry == "United Kingdom")
-	{
-		showCountry = "Canada";
-	}
-	else if(showCountry == "ESA")
-	{
-		showCountry = "Canada";
-	}
+	showCountry = "Canada";
 }
 
 
 function showESA()
 {
-	if(showCountry == "all")
-	{
-		showCountry = "ESA";
-	}
-	else if(showCountry == "ESA")
-	{
-		showCountry = "ESA";
-	}
-	else if(showCountry == "Russia")
-	{
-		showCountry = "ESA";
-	}
-	else if(showCountry == "USA")
-	{
-		showCountry = "ESA";
-	}
-	else if(showCountry == "China")
-	{
-		showCountry = "ESA";
-	} 
-	else if(showCountry == "Japan")
-	{
-		showCountry = "ESA";
-	}
-	else if(showCountry == "Multinational")
-	{
-		showCountry = "ESA";
-	}
-	else if(showCountry == "United Kingdom")
-	{
-		showCountry = "ESA";
-	}
-	else if(showCountry == "Canada")
-	{
-		showCountry = "ESA";
-	}
+	showCountry = "ESA";
 }
 
+
+
+function showComms()
+{
+	showPurpose = "Communications";
+}
+
+
+function showTechDev()
+{
+	showPurpose = "Technology Development";
+}
+
+
+function showEO()
+{
+	showPurpose = "Earth Observation";
+}
+
+
+function showNav()
+{
+	showPurpose = "Navigation/Global Positioning";
+}
+
+
+function showSS()
+{
+	showPurpose = "Space Science";
+}
+
+function showLEO()
+{
+	showOrb = "LEO";
+}
+
+
+function showMEO()
+{
+	showOrb = "MEO";
+}
+
+
+function showEllip()
+{
+	showOrb = "Elliptical";
+}
+
+function showGEO()
+{
+	showOrb = "GEO";
+}
