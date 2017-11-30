@@ -34,11 +34,16 @@ Professor: Matt Bethancourt
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.5.14/addons/p5.dom.js"></script>		<!--p5 import-->
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>		<!--Link to JQuery-->
+	<script type="text/javascript">
+		function getID() {
+			return 4;
+		}
+	</script>
 
 	<script type="text/javascript" src="FinalSAT.js"></script>
 	<script type="text/javascript" src="/socket.io/socket.io.js"></script>
 		<script type="text/javascript">
-			clientID = 4;
+		
 			//create socket connection
 			var socket = io.connect();
 			
@@ -50,6 +55,10 @@ Professor: Matt Bethancourt
 			socket.on('object', function(data){
 				newObject(data);
 				console.log("Is it working?");
+			});
+
+			socket.on('start', function(){
+				startThis();
 			});
 	</script>
 

@@ -39,6 +39,13 @@ var table;
 
 var clientID = -1;
 
+var curTime  = 0;
+var lastTime = 0;
+var timeDiff;
+
+var running = false;
+
+
 function preload()
 {
   loadJSON("satDATAFinal.json", logOut);
@@ -67,11 +74,36 @@ function setup()
   //create canvas
 
   createCanvas(wW, wH);
-
+  clientID = getID();
   //Creates objects for the number of satellites there are given the satNum above
   //This is the important one, the x and y values here are passed to the new SATS!!!
+
+  var start;
+  var end;
   
-  for(var i=0; i<numSats; i++)
+  switch(clientID){
+    case 1: 
+      start = 0;
+      end = 364;
+      break;
+
+    case 2:
+      start = 365;
+      end = 729;
+      break;
+
+    case 3:
+      start = 730;
+      end = 1094;
+      break;
+
+    case 4:
+      start = 1095;
+      end = 1458;
+      break;
+  }
+
+  for(var i=start; i<end; i++)
   {
     var x = random(width);
     var y = random(height);
@@ -90,7 +122,15 @@ function setup()
     sats.push(new SaT(x, y, nm, ct, pr, ob, ma, dt, vh, ur, count));
   }
 
+  curTime = millis();
+
+
+  socket.emit("ready");
+
 }
+
+
+
 
 
 //Drawing the background and the satellites in it
@@ -98,15 +138,22 @@ function setup()
 
 function draw()
 {
-  background(0);  
+  background(0); 
+
+  lastTime = curTime; 
   
+  curTime = millis();
+
+  timeDiff = curTime - lastTime;
+
+if(running){
+
   for(var i=0; i<sats.length; i++)
   {
     //This if statement takes in the showCountry value and displays either all or the filtered Country
-    if(clientID==1)
-    {
+
       sats[i].display();
-    }
+
     // else if(showPurpose == "all" || sats[i].purpose == showPurpose)
     // {
     //  sats[i].display();
@@ -119,6 +166,7 @@ function draw()
 
     // sats[i].update();
   }
+}
   /////////////////////////////////////////////////////////////////////
   //show the info for satellites if they are hovered over by the mouse
   /////////////////////////////////////////////////////////////////////
@@ -136,6 +184,11 @@ function draw()
   //    sats[i].hideInfo();
   //  }
   // }
+}
+
+
+function startThis(){
+  running = true;
 }
 
 
@@ -281,8 +334,8 @@ function SaT(x, y, nm, ct, pr, ob, ma, dt, vh, ur, count)
   {
     if(this.selected == false)        //movement for when the object is not hovered over
     {
-      this.x += 0.5;
-      this.y += random(-0.1,0.5);
+      this.x += 0.5*timeDiff/24;
+      this.y += random(-0.1,0.5)*timeDiff/24;
     }
 
     //This bit down here wraps the canvas around and sends the elements to the oppostie side
