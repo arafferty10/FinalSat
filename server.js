@@ -28,7 +28,7 @@ function requestHandler(req, res) {
 /////////////////////////////
 
 //global variable
-var numClients;
+var numClients = 0;
 
 
 
@@ -44,7 +44,8 @@ io.sockets.on('connection',
 		console.log("We have a new client: " + socket.id);
 
 		// numClients++;
-		// if(numClients == 4){
+		// console.log(numClients);
+
 		
 		///MY SOCKET EVENTS HERE
 		//JSON to read in the server
@@ -52,17 +53,34 @@ io.sockets.on('connection',
 		//modules base counter
 		//clients - use the map function(width)
 
+		// if(numClients==2){
+		// 	socket.emit('start');
+		// 	socket.broadcast.emit('start');
+		// }
+
 		socket.on('message', function(data){
 			socket.broadcast.emit('object', data);
 			console.log("object sent by" + data.clientNum);
 		});
 
-		// }
+		socket.on('ready',function(){
+			numClients++;
+			console.log(numClients);
+
+			if(numClients==4){
+				socket.emit('start');
+				socket.broadcast.emit('start');
+			}
+
+		});
+
+		
 
 		
 
 		socket.on('disconnect', function() {
 			console.log("Client has disconnected " + socket.id);
+			numClients--;
 		});
 
 	}
