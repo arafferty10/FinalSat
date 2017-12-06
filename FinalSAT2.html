@@ -25,6 +25,7 @@ Professor: Matt Bethancourt
 		360 Satellite Projection 2
 	
 	</title>
+	<link rel="shortcut icon" href="">
 
 	<link rel="stylesheet" type="text/css" href="FinalSatStyle.css">
 
@@ -53,12 +54,70 @@ Professor: Matt Bethancourt
 			});
 			socket.on('object', function(data){
 				newObject(data);
-				console.log("Is it working?");
+				// console.log("Is it working?");
 			});
 
 			socket.on('start', function(){
 				startThis();
 			});
+			socket.on('begin',function (data) {
+    // console.log(data.display);
+    console.log("Got Cursor Start");
+    // console.log(sats[100]);
+
+    // if(data.display == "start"){
+      // randSat();
+      for(var i = 0; i<sats.length;i++){
+          if (sats[i].count == currentSat){
+            sats[i].radius = 100;
+          }
+      }
+    // }
+    // else if(data.display == "end"){
+    //   for(var i = 0; i<sats.length;i++){
+    //       if (sats[i].count == currentSat){
+    //         sats[i].radius = 20;
+    //       }
+    //   }
+    //   if(status){
+    //     currentSat += 1;
+    //     console.log(currentSat);
+    //     status = false;
+    //   }
+    //   // sats[100].radius = 25
+    // }
+  });
+	socket.on('rand sat', function(randNum){
+		currentSat = randNum;
+	})
+  socket.on('stop',function (data) {
+    // console.log(data.display);
+    console.log("Got Cursor End");
+    // console.log(sats[100]);
+
+    // if(data.display == "start"){
+      // randSat();
+      for(var i = 0; i<sats.length;i++){
+          if (sats[i].count == currentSat){
+            sats[i].radius = 20;
+          }
+      }
+      // currentSat = random(1, sats.length);
+    // }
+    // else if(data.display == "end"){
+    //   for(var i = 0; i<sats.length;i++){
+    //       if (sats[i].count == currentSat){
+    //         sats[i].radius = 20;
+    //       }
+    //   }
+    //   if(status){
+    //     currentSat += 1;
+    //     console.log(currentSat);
+    //     status = false;
+    //   }
+    //   // sats[100].radius = 25
+    // }
+  });
 	</script>
 
 </head>

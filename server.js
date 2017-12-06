@@ -6,6 +6,10 @@ var httpServer = http.createServer(requestHandler);
 var url = require('url');
 httpServer.listen(8080); //this will be part of url when access our pages
 
+var randSat = 0;
+// Setup basic express server
+var other_server = require("socket.io-client")('http://159.203.130.94:3000');
+
 function requestHandler(req, res) {
 	var parsedUrl = url.parse(req.url);
 	// console.log("The Request is: " + parsedUrl.pathname);
@@ -29,7 +33,6 @@ function requestHandler(req, res) {
 
 //global variable
 var numClients = 0;
-
 
 
 var io = require('socket.io').listen(httpServer);
@@ -60,7 +63,7 @@ io.sockets.on('connection',
 
 		socket.on('message', function(data){
 			socket.broadcast.emit('object', data);
-			console.log("object sent by" + data.clientNum);
+			//console.log("object sent by" + data.clientNum);
 		});
 
 		socket.on('ready',function(){
@@ -73,6 +76,55 @@ io.sockets.on('connection',
 			}
 
 		});
+
+		socket.on('move', function (data) {
+		    console.log(data);
+		    socket.broadcast.emit('move', data);
+		  });
+
+		socket.on('cursor display', function (data) {
+		    console.log(data);
+		    // displayCursor(data.display);
+		    if(data.display == "start"){
+		    	randSat = Math.floor(Math.random() * (1458 - 0) + 0);
+		    	socket.broadcast.emit('rand sat', randSat);
+		    	socket.broadcast.emit('begin', data);
+		    	console.log("start send");
+		    }
+		    if(data.display == "end"){
+		    	socket.broadcast.emit('stop', data);
+		    	console.log("end send");
+		    }
+			
+			//console.log("broadcast emit");
+			
+		  });
+
+		console.log( 'Server: Incoming connection.' );
+
+		  // other_server.emit('add user', "testes")
+		  var addedUser = false;
+		  console.log('a user connected');
+		  // when the client emits 'new message', this listens and executes
+		  socket.on('add user', function (username) {
+		    // we tell the client to execute 'new message'
+		    console.log('user is: ' + username);
+		    // socket.emit('set user', username)
+		  });
+		  // socket.on('move', function (data) {
+		  //   // we tell the client to execute 'new message'
+		  //   console.log(data);
+		  //   emitMessage(socket2, 'move', data);
+		  // });
+		  // socket.on('cursor display', function (data) {
+		  //   // we tell the client to execute 'new message'
+		  //   // other_server.emit('add user', "testes")
+		  //   console.log(data);
+		  //   // emitMessage(socket2);
+		  //   emitMessage(socket2, 'cursor display', data);
+
+		  // });
+
 
 		
 
