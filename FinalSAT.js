@@ -10,6 +10,7 @@
 
 //Satellite Objects are made here
 var sats = [];
+var allSats = [];
 var cursors = [];
 
 //Arrays for the information for each sat
@@ -128,6 +129,24 @@ function setup()
 
     sats.push(new SaT(x, y, nm, ct, pr, ob, ma, dt, vh, ur, count));
   }
+  for(var i=0; i<1458; i++)
+  {
+    var x = random(width);
+    var y = random(height);
+    
+    var nm = satName[i];
+    var ct = satCountry[i];
+    var pr = satPurp[i];
+    var ob = satOrb[i];
+    var ma = satMass[i];
+    var dt = satDate[i];
+    var vh = satVehicle[i];
+    var ur = satUser[i];
+
+    var count = i;    //Using this to pass along the i value with the data to keep it all in lineeeee
+
+    allSats.push(new SaT(x, y, nm, ct, pr, ob, ma, dt, vh, ur, count));
+  }
 
   var posX = 0;
   var posY = 0;
@@ -140,6 +159,7 @@ function setup()
   curTime = millis();
 
   socket.emit("ready");
+  socket.emit('sats', allSats);
 
 }
 
