@@ -193,7 +193,6 @@ $(function() {
   }
 
   // Keyboard events
-
   $window.keydown(function (event) {
     // Auto-focus the current input when a key is typed
     if (!(event.ctrlKey || event.metaKey || event.altKey)) {
@@ -228,7 +227,6 @@ $(function() {
   });
 
   // Socket events
-
   // Whenever the server emits 'login', log the login message
   socket.on('login', function (data) {
     connected = true;
@@ -239,6 +237,8 @@ $(function() {
     });
     addParticipantsMessage(data);
   });
+
+  
 
   // Whenever the server emits 'new message', update the chat body
   socket.on('new message', function (data) {
@@ -352,7 +352,7 @@ $(function() {
           'plain:down dir:right plain:right',
           function (evt, data) {
               dump(evt.type);
-              console.log(data)
+              // console.log(data)
           }
       ).on('pressure', function (evt, data) {
           debug({"pressure": data});

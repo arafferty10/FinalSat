@@ -8,8 +8,6 @@ httpServer.listen(8080); //this will be part of url when access our pages
 
 var randSat = 0;
 // Setup basic express server
-var other_server = require("socket.io-client")('http://159.203.130.94:3000');
-
 function requestHandler(req, res) {
 	var parsedUrl = url.parse(req.url);
 	// console.log("The Request is: " + parsedUrl.pathname);
@@ -34,7 +32,7 @@ function requestHandler(req, res) {
 //global variable
 var numClients = 0;
 
-
+var sats = [];
 var io = require('socket.io').listen(httpServer);
 
 io.sockets.on('connection', 
@@ -81,6 +79,11 @@ io.sockets.on('connection',
 		    console.log(data);
 		    socket.broadcast.emit('move', data);
 		  });
+		socket.on('sats', function (data) {
+			sats = data;
+		    console.log(sats);
+
+		  });
 
 		socket.on('cursor display', function (data) {
 		    console.log(data);
@@ -90,6 +93,10 @@ io.sockets.on('connection',
 		    	socket.broadcast.emit('rand sat', randSat);
 		    	socket.broadcast.emit('begin', data);
 		    	console.log("start send");
+		    	socket.broadcast.emit('satData', sats[randSat]);
+		    	console.log("randSat = " + randSat);
+		    	console.log("randSat Data = " + sats[randSat])
+		    	console.log("Sat Lengthy = " + sats.length)
 		    }
 		    if(data.display == "end"){
 		    	socket.broadcast.emit('stop', data);
