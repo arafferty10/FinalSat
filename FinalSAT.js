@@ -217,37 +217,62 @@ function draw()
   // });
   // console.log(socket);
 
-  socket.on('cursor display',function (data) {
-    // console.log(data.display);
-    // console.log(sats[100]);
-    
-    cursX = mouseX;
-    cursY = mouseY;
+  // socket.on('begin',function (data) {
+  //   // console.log(data.display);
+  //   console.log("Got Cursor Start");
+  //   // console.log(sats[100]);
 
-    if(data.display == "start"){
-      // randSat();
-      status = true;
-      for(var i = 0; i<sats.length;i++){
-        if(sats[i]){
-          if (sats[i].count == currentSat){
-            sats[i].radius = 100;
-          }
-        }
-      }
-    }
-    else if(data.display == "end"){
-      status = false;
-      for(var i = 0; i<sats.length;i++){
-        if(sats[i]){
-          if (sats[i].count == currentSat){
-            sats[i].radius = 20;
-            // currentSat += 1
-          }
-        }
-      }
-      // sats[100].radius = 25
-    }
-  });
+  //   // if(data.display == "start"){
+  //     // randSat();
+  //     for(var i = 0; i<sats.length;i++){
+  //         if (sats[i].count == currentSat){
+  //           sats[i].radius = 100;
+  //         }
+  //     }
+  //   // }
+  //   // else if(data.display == "end"){
+  //   //   for(var i = 0; i<sats.length;i++){
+  //   //       if (sats[i].count == currentSat){
+  //   //         sats[i].radius = 20;
+  //   //       }
+  //   //   }
+  //   //   if(status){
+  //   //     currentSat += 1;
+  //   //     console.log(currentSat);
+  //   //     status = false;
+  //   //   }
+  //   //   // sats[100].radius = 25
+  //   // }
+  // });
+
+  // socket.on('stop',function (data) {
+  //   // console.log(data.display);
+  //   console.log("Got Cursor End");
+  //   // console.log(sats[100]);
+
+  //   // if(data.display == "start"){
+  //     // randSat();
+  //     for(var i = 0; i<sats.length;i++){
+  //         if (sats[i].count == currentSat){
+  //           sats[i].radius = 20;
+  //         }
+  //     }
+  //     currentSat ++;
+  //   // }
+  //   // else if(data.display == "end"){
+  //   //   for(var i = 0; i<sats.length;i++){
+  //   //       if (sats[i].count == currentSat){
+  //   //         sats[i].radius = 20;
+  //   //       }
+  //   //   }
+  //   //   if(status){
+  //   //     currentSat += 1;
+  //   //     console.log(currentSat);
+  //   //     status = false;
+  //   //   }
+  //   //   // sats[100].radius = 25
+  //   // }
+  // });
   
   
   // drawCursor(status);

@@ -5,6 +5,8 @@ var fs = require('fs');
 var httpServer = http.createServer(requestHandler);
 var url = require('url');
 httpServer.listen(8080); //this will be part of url when access our pages
+
+var randSat = 0;
 // Setup basic express server
 var other_server = require("socket.io-client")('http://159.203.130.94:3000');
 
@@ -61,7 +63,7 @@ io.sockets.on('connection',
 
 		socket.on('message', function(data){
 			socket.broadcast.emit('object', data);
-			console.log("object sent by" + data.clientNum);
+			//console.log("object sent by" + data.clientNum);
 		});
 
 		socket.on('ready',function(){
@@ -83,8 +85,18 @@ io.sockets.on('connection',
 		socket.on('cursor display', function (data) {
 		    console.log(data);
 		    // displayCursor(data.display);
-			socket.broadcast.emit('cursor display', data);
-			console.log("broadcast emit");
+		    if(data.display == "start"){
+		    	randSat = Math.floor(Math.random() * (1458 - 0) + 0);
+		    	socket.broadcast.emit('rand sat', randSat);
+		    	socket.broadcast.emit('begin', data);
+		    	console.log("start send");
+		    }
+		    if(data.display == "end"){
+		    	socket.broadcast.emit('stop', data);
+		    	console.log("end send");
+		    }
+			
+			//console.log("broadcast emit");
 			
 		  });
 

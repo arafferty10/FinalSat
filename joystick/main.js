@@ -344,10 +344,10 @@ $(function() {
       joystick.on('start end', function (evt, data) {
           dump(evt.type);
           debug(data);
-          socket.emit('cursor display', {username: username, display:evt.type})
+          socket.emit('cursor display', {"username": username, "display":evt.type})
       }).on('move', function (evt, data) {
           debug(data);
-          socket.emit('move', {username: username, force: data.force, x: data.instance.frontPosition.x,y: data.instance.frontPosition.y} )
+          socket.emit('move', {"username": username, "force": data.force, "x": data.instance.frontPosition.x,"y": data.instance.frontPosition.y} )
       }).on('dir:up plain:up dir:left plain:left dir:down ' +
           'plain:down dir:right plain:right',
           function (evt, data) {
@@ -355,7 +355,7 @@ $(function() {
               console.log(data)
           }
       ).on('pressure', function (evt, data) {
-          debug({pressure: data});
+          debug({"pressure": data});
       });
   }
 
