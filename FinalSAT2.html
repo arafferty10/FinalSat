@@ -60,33 +60,47 @@ Professor: Matt Bethancourt
 			socket.on('start', function(){
 				startThis();
 			});
+      socket.on('shuffler',function (data) {
+        // console.log("Random Satellite = " + data.randNum);
+        // console.log("Username = " + data.username);
+        // console.log("Sats Length = " + sats.length);
+        for(var i = 0; i<sats.length;i++){
+          if (sats[i].username == data.username){
+            sats[i].username = "";
+          }
+          // console.log("Sats i count = " + sats[i].count );
+          // console.log(sats[i])
+          if (sats[i].count == data.randNum){
+              console.log(sats[i].username);
+              sats[i].username = data.username;
+              console.log("Sat " + data.randNum + " owned by " + data.username)
+          }
+        }
+      })
 			socket.on('begin',function (data) {
 
-    console.log("Got Cursor Start");
-   
-      for(var i = 0; i<sats.length;i++)
-      {
-          if (sats[i].count == currentSat)
-          {
-            sats[i].radius = 100;
+    // console.log(data.display);
+      console.log("Radius Larger");
+    // console.log(sats[100]);
+
+    // if(data.display == "start"){
+      // randSat();
+      for(var i = 0; i<sats.length;i++){
+          if (sats[i].username == data.username){
+              sats[i].radius = allSats[sats[i].count].radius;
+              sats[i].radius = 125;
           }
       }
   });
 
-	socket.on('rand sat', function(randNum)
-  {
-		currentSat = randNum;
-	})
-
   socket.on('stop',function (data) {
     // console.log(data.display);
-    console.log("Got Cursor End");
+    console.log("Radius Smaller");
 
-      for(var i = 0; i<sats.length;i++)
-      {
-          if (sats[i].count == currentSat)
-          {
-            sats[i].radius = 20;
+      for(var i = 0; i<sats.length;i++){
+          if (sats[i].username == data.username){
+              sats[i].radius = allSats[sats[i].count].radius;
+
           }
       }
   });

@@ -22,6 +22,7 @@ var satMass = [];
 var satDate = [];
 var satVehicle = [];
 var satUser = []; 
+var userRandSat = [];
 
 var numSats = 1458;       //Is 1459 but we start from zero 
 
@@ -124,10 +125,11 @@ function setup()
     var dt = satDate[i];
     var vh = satVehicle[i];
     var ur = satUser[i];
+    var username = "";
 
     var count = i;    //Using this to pass along the i value with the data to keep it all in lineeeee
 
-    sats.push(new SaT(x, y, nm, ct, pr, ob, ma, dt, vh, ur, count));
+    sats.push(new SaT(x, y, nm, ct, pr, ob, ma, dt, vh, ur, count, username));
   }
 
 
@@ -144,10 +146,12 @@ function setup()
     var dt = satDate[i];
     var vh = satVehicle[i];
     var ur = satUser[i];
+    var username = "";
+    
 
     var count = i;    //Using this to pass along the i value with the data to keep it all in lineeeee
 
-    allSats.push(new SaT(x, y, nm, ct, pr, ob, ma, dt, vh, ur, count));
+    allSats.push(new SaT(x, y, nm, ct, pr, ob, ma, dt, vh, ur, count, username));
   }
 
   var posX = 0;
@@ -162,6 +166,7 @@ function setup()
 
   socket.emit("ready");
   socket.emit('sats', allSats);
+  console.log(sats);
 
 }
 
@@ -254,8 +259,11 @@ function startThis(){
 //Function that does just about everything lol
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-function SaT(x, y, nm, ct, pr, ob, ma, dt, vh, ur, count) 
+// function userSat(username, randSat){
+//   this.username = username;
+//   this.randSat = randSat;
+// }
+function SaT(x, y, nm, ct, pr, ob, ma, dt, vh, ur, count, username) 
 {
   this.x = x;
   this.y = y;
@@ -268,6 +276,7 @@ function SaT(x, y, nm, ct, pr, ob, ma, dt, vh, ur, count)
   this.date = dt;
   this.vehicle = vh;
   this.user = ur;
+  this.username = username;
 
   this.count = count;       //Still passing the i variable from the draw through the rest of the code 
 
@@ -391,7 +400,7 @@ function SaT(x, y, nm, ct, pr, ob, ma, dt, vh, ur, count)
 
       this.x = this.radius * -1;
 
-      socket.emit('message',{"x":this.x,"y":this.y,"nm":this.name,ct:this.country,"pr":this.purpose,"ob":this.orbit,"ma":this.mass,"dt":this.data,"vh":this.vehicle,"ur":this.user,"count":this.count, "clientNum": (clientID%4)+1}); /**clientID we want the object to send to the next client. */
+      socket.emit('message',{"x":this.x,"y":this.y,"nm":this.name,ct:this.country,"pr":this.purpose,"ob":this.orbit,"ma":this.mass,"dt":this.data,"vh":this.vehicle,"ur":this.user, "count":this.count, "username": this.username, "clientNum": (clientID%4)+1}); /**clientID we want the object to send to the next client. */
 
       return true;
 
@@ -451,7 +460,7 @@ function infoManip(j)
 function newObject(data){
   // console.log("object to "+ data.clientNum);
   if (data.clientNum == clientID){
-    sats.push(new SaT(data.x, data.y, data.nm, data.ct, data.pr, data.ob, data.ma, data.dt, data.vh, data.ur, data.count));
+    sats.push(new SaT(data.x, data.y, data.nm, data.ct, data.pr, data.ob, data.ma, data.dt, data.vh, data.ur, data.count, data.username));
    // console.log("read from server");
   }
 

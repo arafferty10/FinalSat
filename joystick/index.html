@@ -216,9 +216,36 @@
               width: 100%;
             }
 
+            .infoBox
+            {
+              /*float: right;*/
+              border: 2px solid white;
+              padding: 4px;
+              /*color: #7F7F7F;*/
+              border-width: 2px;
+              /*position: fixed;*/
+             /* right: 0;*/
+              width: 100%;
+              background-color: black;
+              height: auto;
+              /*opacity: 0.85;*/
+            }
+
+            .info
+            {
+              /*color:#3df733;*/
+              color: white;
+            }
+
         </style>
     </head>
     <body>
+       <script src="nipplejs.js" charset="utf-8"></script>
+        
+        <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+        <script src="main.js"></script>
+        <script src="/socket.io/socket.io.js"></script>
+
         <ul class="pages">
             <li class="chat page">
               <div class="chatArea">
@@ -236,6 +263,25 @@
                         <div data-type="static" class="button static">static</div>
                     </div>
                     <div id="zone_joystick">
+
+                      <h1>ActiveSAT360</h1>
+
+                      <div class="infoBox">
+                        <!--ID is for DOM manipulatr class is for CSS-->
+
+                        <b>Name: </b> <text class = "info" id="name">ISS</text> <br>
+                        <b>Country of Origin: </b> <text class = "info" id="countryName">Country</text> <br>
+                        <b>Purpose: </b> <text class = "info" id="purpose">Whats The Purpose</text> <br>
+                        <b>Users: </b> <text class = "info" id="users">Who Uses It</text> <br>
+                        <b>Class of Orbit: </b> <text class = "info" id="orbClass">Mars Orbit</text> <br>
+                        <b>Launch Mass: </b> <text class = "info" id="mass">1,000 kg</text> <br>
+                        <b>Date of Launch: </b> <text class = "info" id="date">01/01/2000</text> <br>
+                        <b>Launch Vehicle</b> <text class = "info" id="vehicle">Space Shuttle</text> <br>
+                      
+                    </div>
+
+                    <!--This whole section "debug" is hidden-->
+                    
                         <div id="debug">
                             <ul>
                                 <li class="position">
@@ -266,6 +312,12 @@
                             </ul>
                             <div class="dump"></div>
                         </div>
+
+                    <!--End of Hidden Section-->
+
+                    <button type="button" id="shuffleButton">Shuffle</button>
+
+
                         <div class="zone dynamic active"><h1>dynamic</h1></div>
                         <div class="zone semi"><h1>semi</h1></div>
                         <div class="zone static"><h1>static</h1></div>
@@ -277,23 +329,49 @@
             </li>
             <li class="login page">
               <div class="form">
+                <h2 class="title">Welcome to ActiveSAT360!</h2>
                 <h3 class="title">What's your nickname?</h3>
                 <input class="usernameInput" type="text" maxlength="14" />
               </div>
             </li>
           </ul>
         
-        <script src="nipplejs.js" charset="utf-8"></script>
-        
         <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
         <script src="main.js"></script>
-        <script src="/socket.io/socket.io.js"></script>
+        <script src="/socket.io/socket.io.js"></script> -->
         <script>
           var socket = io.connect();
+          var allSats = [];
           socket.on('satData',function (data) {
             // console.log(data.display);
-            console.log(data);
+
+            //Modify HTML functions here
+            //Making JS elements for the HTML DOM manipulator part
+            var name = document.getElementById("name");
+            var country = document.getElementById("countryName");
+            var purpose = document.getElementById("purpose");;
+            var user = document.getElementById("users");
+            var orbit = document.getElementById("orbClass");
+            var lmass = document.getElementById("mass");
+            var lDate = document.getElementById("date");
+            var lVehicle = document.getElementById("vehicle");
+
+            //Rewriting the information in for the infobox
+            name.innerHTML = allSats[randomSat].name;
+            country.innerHTML = allSats[randomSat].country;
+            purpose.innerHTML = allSats[randomSat].purpose;
+            user.innerHTML = allSats[randomSat].user;
+            orbit.innerHTML = allSats[randomSat].orbit;
+            lmass.innerHTML = allSats[randomSat].mass;
+            lDate.innerHTML = allSats[randomSat].date;
+            lVehicle.innerHTML = allSats[randomSat].vehicle; 
+            console.log(allSats[randomSat]);
           });
+          socket.on('allSats', function (data){
+            allSats = data;
+            console.log(data)
+          });
+
         </script>
         
     </body>

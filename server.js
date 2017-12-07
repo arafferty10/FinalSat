@@ -43,6 +43,11 @@ io.sockets.on('connection',
 		//this is also were we send messages
 	
 		console.log("We have a new client: " + socket.id);
+		if(sats[0]){
+			socket.broadcast.emit('allSats', sats);
+			console.log("ksdhfKJSFLjskjfhalksdjhflkasjdf")
+		}
+		
 
 		// numClients++;
 		// console.log(numClients);
@@ -75,36 +80,40 @@ io.sockets.on('connection',
 
 		});
 
-		socket.on('move', function (data) {
-		    console.log(data);
-		    socket.broadcast.emit('move', data);
-		  });
+		// socket.on('move', function (data) {
+		//     console.log(data);
+		//     socket.broadcast.emit('move', data);
+		//   });
 		socket.on('sats', function (data) {
 			sats = data;
 		    console.log(sats);
+		    socket.broadcast.emit('allSats', data);
 
 		  });
+		socket.on('getAllSats', function (data){
+			console.log("RELSLKJFLSDJFLSKDJFLKSJDFLKJSF")
+			socket.broadcast.emit('allSats', sats);
+		});
+		socket.on('shuffle',function (data){
+			socket.broadcast.emit('shuffler', data);
+			socket.broadcast.emit('satData', data.randNum);
+	    	console.log("randSat DataNum = " + data.randNum)
+	    	console.log("Sat Lengthy = " + sats.length)
+		})
 
 		socket.on('cursor display', function (data) {
 		    console.log(data);
 		    // displayCursor(data.display);
 		    if(data.display == "start"){
-		    	randSat = Math.floor(Math.random() * (1458 - 0) + 0);
-		    	socket.broadcast.emit('rand sat', randSat);
+		    	// randSat = Math.floor(Math.random() * (1458 - 0) + 0);
+		    	// socket.broadcast.emit('rand sat', {"username": data.username, "randSat": randSat);
 		    	socket.broadcast.emit('begin', data);
 		    	console.log("start send");
-		    	socket.broadcast.emit('satData', sats[randSat]);
-		    	console.log("randSat = " + randSat);
-		    	console.log("randSat Data = " + sats[randSat])
-		    	console.log("Sat Lengthy = " + sats.length)
 		    }
 		    if(data.display == "end"){
 		    	socket.broadcast.emit('stop', data);
 		    	console.log("end send");
-		    }
-			
-			//console.log("broadcast emit");
-			
+		    }			
 		  });
 
 		console.log( 'Server: Incoming connection.' );
@@ -116,6 +125,7 @@ io.sockets.on('connection',
 		  socket.on('add user', function (username) {
 		    // we tell the client to execute 'new message'
 		    console.log('user is: ' + username);
+		    socket.broadcast.emit('allSats', sats);
 		    // socket.emit('set user', username)
 		  });
 		  // socket.on('move', function (data) {

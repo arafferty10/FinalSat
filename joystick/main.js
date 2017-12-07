@@ -1,3 +1,4 @@
+var randomSat;
 $(function() {
   var FADE_TIME = 150; // ms
   var TYPING_TIMER_LENGTH = 400; // ms
@@ -22,6 +23,7 @@ $(function() {
   var typing = false;
   var lastTypingTime;
   var $currentInput = $usernameInput.focus();
+  // var randomSat = Math.floor((Math.random() * 1458));
 
   var socket = io();
 
@@ -53,6 +55,15 @@ $(function() {
       
     }
   }
+  socket.on('allSats', function (data){
+    allSats = data;
+  });
+
+  $( "#shuffleButton" ).click(function() {
+    randomSat = Math.floor((Math.random() * 1458));
+    socket.emit('shuffle', {'username': username , 'randNum': randomSat});
+    console.log("Button Clicked!")
+  })
 
   // Sends a chat message
   function sendMessage () {
@@ -347,7 +358,7 @@ $(function() {
           socket.emit('cursor display', {"username": username, "display":evt.type})
       }).on('move', function (evt, data) {
           debug(data);
-          socket.emit('move', {"username": username, "force": data.force, "x": data.instance.frontPosition.x,"y": data.instance.frontPosition.y} )
+          // socket.emit('move', {"username": username, "force": data.force, "x": data.instance.frontPosition.x,"y": data.instance.frontPosition.y} )
       }).on('dir:up plain:up dir:left plain:left dir:down ' +
           'plain:down dir:right plain:right',
           function (evt, data) {
@@ -392,6 +403,7 @@ $(function() {
   }
 
   var nbEvents = 0;
+
 
   // Dump data
   function dump (evt) {
