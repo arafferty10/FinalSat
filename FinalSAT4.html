@@ -80,6 +80,7 @@ Professor: Matt Bethancourt
       })
 			socket.on('begin',function (data) {
     // console.log(data.display);
+
       console.log("Radius Larger");
     // console.log(sats[100]);
 
@@ -91,24 +92,8 @@ Professor: Matt Bethancourt
               sats[i].radius = 125;
           }
       }
-    // }
-    // else if(data.display == "end"){
-    //   for(var i = 0; i<sats.length;i++){
-    //       if (sats[i].count == currentSat){
-    //         sats[i].radius = 20;
-    //       }
-    //   }
-    //   if(status){
-    //     currentSat += 1;
-    //     console.log(currentSat);
-    //     status = false;
-    //   }
-    //   // sats[100].radius = 25
-    // }
   });
-  // socket.on('rand sat', function(randNum){
-  //  currentSat = randNum;
-  // })
+
   socket.on('stop',function (data) {
     // console.log(data.display);
     console.log("Radius Smaller");
@@ -126,22 +111,8 @@ Professor: Matt Bethancourt
               sats[i].radius = allSats[sats[i].count].radius;
           }
       }
-      // currentSat = random(1, sats.length);
-    // }
-    // else if(data.display == "end"){
-    //   for(var i = 0; i<sats.length;i++){
-    //       if (sats[i].count == currentSat){
-    //         sats[i].radius = 20;
-    //       }
-    //   }
-    //   if(status){
-    //     currentSat += 1;
-    //     console.log(currentSat);
-    //     status = false;
-    //   }
-    //   // sats[100].radius = 25
-    // }
   });
+
 	</script>
 
 </head>
