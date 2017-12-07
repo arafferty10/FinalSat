@@ -61,16 +61,34 @@ Professor: Matt Bethancourt
 			socket.on('start', function(){
 				startThis();
 			});
+      socket.on('shuffler',function (data) {
+        // console.log("Random Satellite = " + data.randNum);
+        // console.log("Username = " + data.username);
+        // console.log("Sats Length = " + sats.length);
+        for(var i = 0; i<sats.length;i++){
+          if (sats[i].username == data.username){
+            sats[i].username = "";
+          }
+          // console.log("Sats i count = " + sats[i].count );
+          // console.log(sats[i])
+          if (sats[i].count == data.randNum){
+              console.log(sats[i].username);
+              sats[i].username = data.username;
+              console.log("Sat " + data.randNum + " owned by " + data.username)
+          }
+        }
+      })
 			socket.on('begin',function (data) {
     // console.log(data.display);
-    console.log("Got Cursor Start");
+      console.log("Radius Larger");
     // console.log(sats[100]);
 
     // if(data.display == "start"){
       // randSat();
       for(var i = 0; i<sats.length;i++){
-          if (sats[i].count == currentSat){
-            sats[i].radius = 100;
+          if (sats[i].username == data.username){
+              sats[i].radius = allSats[sats[i].count].radius;
+              sats[i].radius = 125;
           }
       }
     // }
@@ -88,19 +106,24 @@ Professor: Matt Bethancourt
     //   // sats[100].radius = 25
     // }
   });
-	socket.on('rand sat', function(randNum){
-		currentSat = randNum;
-	})
+  // socket.on('rand sat', function(randNum){
+  //  currentSat = randNum;
+  // })
   socket.on('stop',function (data) {
     // console.log(data.display);
-    console.log("Got Cursor End");
+    console.log("Radius Smaller");
     // console.log(sats[100]);
 
     // if(data.display == "start"){
       // randSat();
+      // for(var i = 0; i<sats.length;i++){
+      //     if (sats[i].count == currentSat){
+      //       sats[i].radius = 20;
+      //     }
+      // }
       for(var i = 0; i<sats.length;i++){
-          if (sats[i].count == currentSat){
-            sats[i].radius = 20;
+          if (sats[i].username == data.username){
+              sats[i].radius = allSats[sats[i].count].radius;
           }
       }
       // currentSat = random(1, sats.length);
