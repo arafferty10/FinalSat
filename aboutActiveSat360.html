@@ -1,0 +1,356 @@
+<!doctype html>
+
+<html lang = "en">
+
+
+<head>
+
+	<meta charset = "utf-8">
+
+
+	<title>
+
+		About ActiveSat360
+	
+	</title>
+
+	<!-- <link rel="stylesheet" type="text/css" href="activeSAT.css"> -->
+
+<style type="text/css">
+
+/*@media only screen and (max-width: 765px)
+{*/
+/*Mobile CSS only*/
+h1 a
+{
+	font-size: 3em;
+}
+
+h2
+{
+	font-size: 2.25em;
+}
+
+h3
+{
+	font-size: 2.25em;
+}
+.container
+{
+	border:2px solid;
+	color: white
+	background-color:black;
+	padding: 5px;
+	width: 100%;
+	font-size: 2em;
+
+}
+
+.full
+{
+	background-color: black;
+	width: 100%;
+	padding: 10px;
+	box-sizing: border-box;
+	align-content: center;
+	justify-content: center;
+	font-family: 'Open Sans', sans-serif;
+	border: 2px solid white;
+	text-align: center;
+	font-size: 2em;
+}
+
+img
+{
+	max-width: 100%;
+	max-height: 100%;
+}
+/*Desktop CSS*/
+@media only screen and (min-width: 768px) 
+{
+
+* ,
+*:before,
+*:after
+{
+	margin: 0; padding: 0;
+	/*font-family: 'Raleway', sans-serif;*/
+	font-family: 'Saira', sans-serif;
+	background-color: black;
+}
+
+h1
+{
+	
+}
+
+h2
+{
+	
+}
+
+h3
+{
+	
+}
+
+body
+{
+	color: white;
+	padding: 10px;
+}
+
+
+a
+{
+	text-decoration: none;
+	color: white;
+}
+
+a:hover
+{
+	color: #7F7F7F;
+	text-decoration: none;
+}
+
+a:visited
+{
+	color: white;
+}
+
+p a 
+{
+	text-decoration: underline;
+}
+
+h2 a
+{
+	text-decoration: underline;
+}
+.container
+{
+	border:2px solid;
+	color: white
+	background-color:black;
+	padding: 5px;
+	width: 98%;
+
+}
+
+.full
+{
+	background-color: black;
+/*	opacity: 0.8;*/
+	width: 98%;
+	padding: 10px;
+	box-sizing: border-box;
+	align-content: center;
+	justify-content: center;
+	font-family: 'Open Sans', sans-serif;
+	border: 2px solid white;
+	text-align: center;
+}
+
+.half
+{
+	background-color: #35A5EA;
+	width: 460px;
+	margin: 10px;
+	padding: 10px;
+	box-sizing: border-box;
+	font-family: 'Open Sans', sans-serif;
+	border: 2px solid white;
+}
+
+}
+
+
+
+
+		
+</style>
+
+
+</head>
+
+<body>
+
+		<div class="header">
+
+			<h1><a href="http://creative.colorado.edu/~aira5953/web/activeSAT.html#">ActiveSAT360</a></h1>
+			<h2>A project by <a href="http://creative.colorado.edu/~aira5953/web/">Aidan Rafferty</a>, <a href="http://kristofklipfel.com/">Kristof Klipfel</a>, and Carolyn Castanon</h2>
+
+		</div>
+
+		<br>
+
+	<div class="container">
+
+			<h3>What is ActiveSAT360?</h3>
+
+			<br>
+
+			<p>ActiveSAT360 is the extension of a creative data visualization project originally created as a midterm assignment for Space Data Studio taught by Matthew Bethancourt at the University of Colorado Boulder. The original <a href="http://creative.colorado.edu/~aira5953/web/activeSAT.html">ActiveSAT</a> project is a captivating, interactive infographic meant to draw attention to the ever increasing presence of satellites and debris in Earth orbit. The project utilizes a data set from the <a href="http://www.ucsusa.org/nuclear-weapons/space-weapons/satellite-database#.WewS-mhSzLb">Union of Concerned Scientists</a> that tracks and catalogs all active satellites in orbit around the Earth. <br><br>The goal of ActiveSAT360 is to be able to fully immerse the users in the visualization. With less than a month to complete this, the task seemed incredibly daunting. After nearly 100+ hours of hard work, we were able to seperate the HTML file into four seperate webapges and socket the data between them, we can project each page with a seperate projector into the ATLAS Black Box Theater. You can find the most recent version of the code at <a href="https://github.com/arafferty10/FinalSAT">GitHub</a> please feel free to comment or make suggestions.</p>
+	</div>
+
+	<br>
+
+	<div class="container">
+
+			<h3>How to Use ActiveSAT</h3>
+
+			<br>
+
+			<p>ActiveSAT360 is built to be a social and immersive display. Each user creates a nickname which is tied to their device upon initializing. The user presses the "shuffle" button to display the information about a particular satellite on their smartphone. They can then "ping" their satellite by tapping on the area below the information box. <br><br>When the screen is tapped, the assigned satellite takes on a larger size until the screen is released. Participants can begin to understand the visualization by shuffling through and exploring the exhibit. The color of each craft corresponds to the country the satellite belongs to, while the radius of the object is determined based on the launch mass.</p>
+
+			<br>
+
+			<h3>Colors</h3>
+
+			<br>
+
+			<text style="color: blue; font-size: 1.5em;">Blue</text><text>  United States of America </text>
+			<br>
+			<text style="color: red; font-size: 1.5em;">Red</text><text>  Russia </text>
+			<br>
+			<text style="color: yellow; font-size: 1.5em;">Yellow</text><text>  China </text>
+			<br>
+			<text style="color: rgb(247, 247, 12); font-size: 1.5em;">Orange</text><text>  Japan </text>
+			<br>
+			<text style="color: rgb(7, 249, 245); font-size: 1.5em;">Cyan</text><text>  Multinational </text>
+			<br>
+			<text style="color: rgb(152, 0, 255); font-size: 1.5em;">Purple</text><text>  United Kingom </text>
+			<br>
+			<text style="color: rgb(255, 0, 246); font-size: 1.5em;">Pink</text><text>  Canada </text>
+			<br>
+			<text style="color: rgb(84, 91, 102); font-size: 1.5em;">Grey</text><text>  ESA </text>
+			<br>
+			<text style="color: white; font-size: 1.5em;">White</text><text>  Other </text>
+
+			<br>
+			<br>
+
+			<h3>Orbits</h3>
+
+			<br>
+
+			<p>LEO > <a href="https://en.wikipedia.org/wiki/Low_Earth_orbit">Low Earth Orbit</a> > geocentric orbits with altitudes from 160 to 2,000 km (100–1,240 miles).</p>
+
+			<br>
+
+			<p>MEO > <a href="https://en.wikipedia.org/wiki/Medium_Earth_orbit"> Medium Earth Orbit</a> > geocentric orbits ranging in altitude from 2,000 km (1,240 miles) to just below geosynchronous orbit at 35,786 kilometers (22,236 mi).</p>
+
+			<br>
+
+			<p>GEO > <a href = "https://en.wikipedia.org/wiki/Geostationary_orbit">Geostationary Orbit</a> > have a semi-major axis of 42,164 km (26,199 mi).</p>
+
+			<br>
+
+			<p><a href ="https://en.wikipedia.org/wiki/Elliptic_orbit">Elliptical Orbit</a> > orbit with an eccentricity greater than 0 and less than 1 whose orbit traces the path of an ellipse.</p>
+
+			<br>
+
+			<h3>Radius</h3>
+			<br>
+			<p>The radius of each satellite object is determined by taking the mass of the craft, multiplying it by 0.005 to shrink all the values down and bring them to an even playing field, and then adding ten to the final value to ensure that even satellites with classified masses will be drawn on the screen.</p>
+	</div>
+
+	<br>
+
+	<div class="full">
+
+	<strong>Progress Images</strong>
+	<br>
+
+			<figure>
+				<img id="progressImg" src="finalSATimages/sats1.jpg" onclick="image(this)">
+				
+			</figure>
+
+		<div style="text-align: center;">
+
+			<a onclick="prevImage()"><strong>Previous</strong></a>     |
+
+			<a onclick="nextImage()"><strong>Next</strong></a>
+
+		</div>
+	</div>
+
+	<br>
+
+	<div class="container" id="futureDev">
+
+		<h3>Future Developments</h3>
+		<br>
+
+		<h4>Cursor Control</h4>
+		<br>
+
+		<p>The aspect of our code that "pings" the satellite utilizes a JavaScript library called <a href="https://yoannmoinet.github.io/nipplejs/">Nipple.js</a>. The goal was to be able to use the Nipple.js library to create individuals cursors for each user that could be controlled from ones smartphone. Users would then be able to maneuver in the 360 projection and select the satellite which they wished to see more information about. We were able to build the <a href="http://creative.colorado.edu/~aira5953/web/p5TestCursor.html">cursor</a> using p5.js and we had successfully passed control data through the web socket to the server. Unfortunatley, we were unable to fully functionalize this in time for the exhibition. The greatest challenge we faced was successfully creating multiple cursors and maintaining seperation between the data streams. We hope to be able to implement this in the future.</p>
+		<br>
+
+		<h4>Three Dimension Canvas</h4>
+		<br>
+
+		<p>A stretch goal for this project was to implement visual differences in depth representative of satellites at different orbital heights using three.js. This is something that is still under development for this project and for <a href="http://creative.colorado.edu/~aira5953/web/activeSAT.html">ActiveSAT</a>. With this implementation, users would be able to visually deduce the seperate altitudes at which satellites occupy.</p>
+
+		<!-- <p>The project you have seen today is the culmination of a lot of work over a very short time period. When we started this project we had no idea what the undertaking would be. We each had knowledge in different areas and we were determined to bring all that knowledge together to create a cohesive piece. We primarily used four additional JavaScript libraries to design our visualization; p5.js, sockets.io, nipple.js, and node.js. Sockets.io and node.js were used to create and manage the server side of the project and the data transfers between the each of the HTML pages. p5.js was utilized for the animation and drawing properties of the visualization, this powerful library was invaluable to the design of the visualization. </p> -->
+		
+	</div>
+
+	<br>
+
+		<footer class="full">
+			<ul>
+				<a href="https://github.com/arafferty10/FinalSat" target="_blank"><img style="height: 75px; width: 75px;" src="https://assets-cdn.github.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub"></a>
+			</ul>
+				
+		</footer>
+
+		<script type="text/javascript">
+			var img = document.getElementById('progressImg');
+
+			var progSlides = [
+				"finalSATimages/sats1.jpg",
+				"finalSATimages/sats2.jpg",
+				"finalSATimages/sats3.jpg",
+				"finalSATimages/sats4.jpg",
+				"finalSATimages/sats5.jpg",
+				"finalSATimages/sats6.jpg",
+				"finalSATimages/sats7.jpg",
+				"finalSATimages/sats8.jpg",
+				"finalSATimages/sats9.jpg",
+			];
+
+			var counter = 0;
+			function prevImage()
+			{
+				if(counter > 0){
+					counter--;
+					img.src = progSlides[counter];
+				}else{
+					counter = progSlides.length-1
+					img.src = progSlides[counter];
+					proj3Cap.innerHTML = captions[counter];
+
+				}
+
+			}
+
+			function nextImage()
+			{
+				if (counter < progSlides.length-1) {
+					counter++;				//The reason we count first is because the first image is already loaded when the page opens
+					img.src = progSlides[counter];
+				} else{
+					counter = 0;
+					img.src = progSlides[counter];
+
+				}
+			}
+			
+		</script>
+
+	</body>
+
+</html>
