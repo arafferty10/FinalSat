@@ -1,25 +1,11 @@
 
-# Socket.IO Chat
+# ActiveSAT360 
 
-A simple chat demo for socket.io
+An immersive satellite visualization experience
 
 ## How to use
 
-```
-$ cd socket.io
-$ npm install
-$ cd examples/chat
-$ npm install
-$ npm start
-```
+ActiveSAT360 is built to be a social and immersive display. Each user creates a nickname which is tied to their device upon initializing. The user presses the "shuffle" button to display the information about a particular satellite on their smartphone. They can then "ping" their satellite by tapping on the area below the information box.
 
-And point your browser to `http://localhost:3000`. Optionally, specify
-a port by supplying the `PORT` env variable.
+When the screen is tapped, the assigned satellite takes on a larger size until the screen is released. Participants can begin to understand the visualization by shuffling through and exploring the exhibit. The color of each craft corresponds to the country the satellite belongs to, while the radius of the object is determined based on the launch mass. 
 
-## Features
-
-- Multiple users can join a chat room by each entering a unique username
-on website load.
-- Users can type chat messages to the chat room.
-- A notification is sent to all users when a user joins or leaves
-the chatroom.
