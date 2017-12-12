@@ -60,10 +60,45 @@ $(function() {
   });
 
   $( "#shuffleButton" ).click(function() {
+    socket.emit('cursor display', {"username": username, "display":"end"})
     randomSat = Math.floor((Math.random() * 1458));
     socket.emit('shuffle', {'username': username , 'randNum': randomSat});
     console.log("Button Clicked!")
   })
+
+
+
+  var timeoutId = 0;
+
+  // $('#pingButton').on('mousedown', function() {
+  //     socket.emit('cursor display', {"username": username, "display":"start"})
+  //     timeoutId = setTimeout(myFunction, 1000);
+  //     console.log("Ping Clicked!")
+  // }).on('mouseup', function() {
+  //     clearTimeout(timeoutId);
+  //     socket.emit('cursor display', {"username": username, "display":"end"})
+  //     console.log("Ping Released!")
+  // });
+
+
+
+  $( "#pingOnButton" ).click(function() {
+    socket.emit('cursor display', {"username": username, "display":"start"})
+    $("#pingOnButton").css("border-color","#000")
+    $("#pingOffButton").css("border-color","#FFF")
+    console.log("Ping Clicked!")
+  })
+  $( "#pingOffButton" ).click(function() {
+    socket.emit('cursor display', {"username": username, "display":"end"})
+    $("#pingOnButton").css("border-color","#FFF")
+    $("#pingOffButton").css("border-color","#000")
+    console.log("Ping Clicked!")
+  })
+
+  // $( "#pingButton" ).mouseup(function() {
+  //   socket.emit('cursor display', {"username": username, "display":"end"})
+  //   console.log("Ping Released!")
+  // })
 
   // Sends a chat message
   function sendMessage () {

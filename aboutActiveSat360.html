@@ -5,6 +5,17 @@
 
 <head>
 
+	<!-- Global site tag (gtag.js) - Google Analytics -->
+	<script async src="https://www.googletagmanager.com/gtag/js?id=UA-109063279-3"></script>
+	<script>
+	  window.dataLayer = window.dataLayer || [];
+	  function gtag(){dataLayer.push(arguments);}
+	  gtag('js', new Date());
+
+	  gtag('config', 'UA-109063279-3');
+	</script>
+
+
 	<meta charset = "utf-8">
 
 
@@ -21,7 +32,7 @@
 /*@media only screen and (max-width: 765px)
 {*/
 /*Mobile CSS only*/
-h1 a
+/*h1 a
 {
 	font-size: 3em;
 }
@@ -58,7 +69,7 @@ h3
 	border: 2px solid white;
 	text-align: center;
 	font-size: 2em;
-}
+}*/
 
 img
 {
@@ -66,8 +77,8 @@ img
 	max-height: 100%;
 }
 /*Desktop CSS*/
-@media only screen and (min-width: 768px) 
-{
+/*@media only screen and (min-width: 768px) 
+{*/
 
 * ,
 *:before,
@@ -81,7 +92,7 @@ img
 
 h1
 {
-	
+	font-size: 2/5em
 }
 
 h2
@@ -162,7 +173,14 @@ h2 a
 	border: 2px solid white;
 }
 
+.poster
+{
+	margin-left: auto;
+	margin-left: auto;
+	width: 98%;
 }
+
+/*}*/
 
 
 
@@ -177,7 +195,7 @@ h2 a
 
 		<div class="header">
 
-			<h1><a href="http://creative.colorado.edu/~aira5953/web/activeSAT.html#">ActiveSAT360</a></h1>
+			<h1>ActiveSAT360</h1>
 			<h2>A project by <a href="http://creative.colorado.edu/~aira5953/web/">Aidan Rafferty</a>, <a href="http://kristofklipfel.com/">Kristof Klipfel</a>, and Carolyn Castanon</h2>
 
 		</div>
@@ -191,6 +209,35 @@ h2 a
 			<br>
 
 			<p>ActiveSAT360 is the extension of a creative data visualization project originally created as a midterm assignment for Space Data Studio taught by Matthew Bethancourt at the University of Colorado Boulder. The original <a href="http://creative.colorado.edu/~aira5953/web/activeSAT.html">ActiveSAT</a> project is a captivating, interactive infographic meant to draw attention to the ever increasing presence of satellites and debris in Earth orbit. The project utilizes a data set from the <a href="http://www.ucsusa.org/nuclear-weapons/space-weapons/satellite-database#.WewS-mhSzLb">Union of Concerned Scientists</a> that tracks and catalogs all active satellites in orbit around the Earth. <br><br>The goal of ActiveSAT360 is to be able to fully immerse the users in the visualization. With less than a month to complete this, the task seemed incredibly daunting. After nearly 100+ hours of hard work, we were able to seperate the HTML file into four seperate webapges and socket the data between them, we can project each page with a seperate projector into the ATLAS Black Box Theater. You can find the most recent version of the code at <a href="https://github.com/arafferty10/FinalSAT">GitHub</a> please feel free to comment or make suggestions.</p>
+	</div>
+
+	<br>
+
+	<div class="container">
+
+		<h3>About the Exhibit</h3>
+		<br>
+
+		<div class="poster">
+		<embed src="img/Artboard1.pdf#toolbar=0&navpanes=0&scrollbar=0"  width="800" height="1250" type='application/pdf'>
+		</div>
+
+		<p>On Saturday December 9th, we presented the project during the Visualizing Space exhibition in the ATLAS Black Box Theater at CU Boulder. The exhibition was a great success and our project was very well recivevd. We mounted four projectors around the ceiling of the theater. Each projected a quarter of the project onto the opposite walls and we positioned the projectors so that it would appear that satellites were continuously passing around the room. Visually the project was incredibly appealing, stretching from the floor, 20 feet to the ceiling and wrapping around the entire theater, visitors were treated to an enchanting display that appeared to be orbiting around them as they explored the rest of the exhibition.</p>
+
+		<img src="img/activeSAT360-1.jpg" onclick="image(this)" style="justify-content: center;">
+
+		<p>Using Google Analytics we were able to track in real time how users were interacting with the visualization. We had almost 70 distinct users who accounted for nearly 300 page views between the mobile portal and the About page combined. At its peak, we had 45 mobile users interacting with the visualization at once. We were very pleased with this because while we wrote the software to be compatabile with multiple devices we had never tested more than 4 mobile clients on it at once. We noticed that some users were having difficulty initially understanding the uses of the controller. If we had redone this, we would habe liked to make a better onboarding system showed the user right off the bat how to use the system rather than putting it in the about page which only a portion of the users visited. </p> 
+
+		<img src="img/activeSAT360-2.jpg" onclick="image(this)" style="justify-content: center;">
+
+		<p>The feedback that we recieved on the installation was very insightful and helpful. Users were mesmerized by the orbiting display that encapsulated them within the exhibition. Many attendees expressed that they enjoyed feeling like the centerpiece in an orbital display that centered around them. Subsequently, being able to interact with the visual was very rewarding and gave the users a stronger sense of connection to the piece. There was a slight lag in the display that appeared when an object would leave the right side of one screen and appear on the left side of the next one. Some users were keen to observing this when the object they were interacting with would momentarily disappear and then reappear a second later. We utilized black curtains in some areas of the projection field and aligned them with the edges of the image to give the illusion that the momentarily lapse was caused by the physical black barrier impeding the progress of the satellites. We really enjoyed being able to bring this project to fruition and for the physical installation to turn out as beautiful as it did.</p> <br> 
+
+		<img src="img/activeSAT360-3.jpg" onclick="image(this)" style="justify-content: center;">
+
+		<br>
+		<p>We would like to give a special thank you to Matt Bethancourt for organizing the event and teaching such a fantastic course. Gary McCrumb for all his help in the Black Box setting up the physical exhibit. Finally, Chris Koski for helping us overcome any coding obstacle that was driving us nuts. Without you guys none of this could have been possible. 
+		</p>
+		
 	</div>
 
 	<br>
